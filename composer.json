@@ -1,0 +1,30 @@
+{
+    "name": "fivesqrd/clerico-client-php",
+    "description": "The Clerico Document client library",
+    "require": {
+        "guzzlehttp/guzzle": "~6.0"
+    },
+    "authors": [
+        {
+            "name": "Christian Burger",
+            "email": "christian@fivesqrd.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Clerico\\": "src/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Clerico\\Test\\": "tests/" }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Clerico\\Laravel\\ServiceProvider"
+            ],
+            "aliases": {
+                "Clerico": "Clerico\\Laravel\\Facade"
+            }
+        }
+    }
+}
