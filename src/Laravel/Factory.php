@@ -1,8 +1,8 @@
 <?php
 
-namespace Clerico\Laravel;
+namespace Paperjet\Laravel;
 
-use Clerico\Document;
+use Paperjet\Document;
 
 class Factory
 {

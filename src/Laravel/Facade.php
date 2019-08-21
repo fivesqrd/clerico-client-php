@@ -1,5 +1,5 @@
 <?php 
-namespace Clerico\Laravel;
+namespace Paperjet\Laravel;
 
 use Illuminate\Support;
 
@@ -17,6 +17,6 @@ class Facade extends Support\Facades\Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'clerico';
+        return 'paperjet';
     }
 }

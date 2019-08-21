@@ -1,5 +1,5 @@
 <?php
-namespace Clerico;
+namespace Paperjet;
 
 class Document
 {

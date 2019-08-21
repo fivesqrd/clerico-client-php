@@ -1,6 +1,6 @@
 {
-    "name": "fivesqrd/clerico-client-php",
-    "description": "The Clerico Document client library",
+    "name": "fivesqrd/paperjet-sdk-php",
+    "description": "The Paperjet document client",
     "require": {
         "guzzlehttp/guzzle": "~6.0"
     },
@@ -12,18 +12,18 @@
         }
     ],
     "autoload": {
-        "psr-4": { "Clerico\\": "src/" }
+        "psr-4": { "Paperjet\\": "src/" }
     },
     "autoload-dev": {
-        "psr-4": { "Clerico\\Test\\": "tests/" }
+        "psr-4": { "Paperjet\\Test\\": "tests/" }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Clerico\\Laravel\\ServiceProvider"
+                "Paperjet\\Laravel\\ServiceProvider"
             ],
             "aliases": {
-                "Clerico": "Clerico\\Laravel\\Facade"
+                "Paperjet": "Paperjet\\Laravel\\Facade"
             }
         }
     }

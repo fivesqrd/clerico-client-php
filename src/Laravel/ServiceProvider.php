@@ -1,6 +1,6 @@
 <?php
 
-namespace Clerico\Laravel;
+namespace Paperjet\Laravel;
 
 use Atlas;
 use Illuminate\Support;
@@ -29,7 +29,7 @@ class ServiceProvider extends Support\ServiceProvider
     {
         /* Path to default config file */
         $this->publishes([
-            dirname(__DIR__) . '/src/Laravel/_config.php' => config_path('clerico.php')
+            dirname(__DIR__) . '/src/Laravel/_config.php' => config_path('paperjet.php')
         ]);
 
     }
@@ -42,15 +42,15 @@ class ServiceProvider extends Support\ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            dirname(__DIR__) . '/src/Laravel/_config.php', 'clerico'
+            dirname(__DIR__) . '/src/Laravel/_config.php', 'paperjet'
         );
 
-        $this->app->singleton('clerico', function ($app) {
-            $config = $app->make('config')->get('clerico');
+        $this->app->singleton('paperjet', function ($app) {
+            $config = $app->make('config')->get('paperjet');
             return new Factory($config);
         });
 
-        $this->app->alias('clerico', 'Clerico');
+        $this->app->alias('paperjet', 'Paperjet');
     }
 
     /**
@@ -60,6 +60,6 @@ class ServiceProvider extends Support\ServiceProvider
      */
     public function provides()
     {
-        return ['clerico'];
+        return ['paperjet'];
     }
 }

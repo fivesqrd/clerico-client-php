@@ -1,15 +1,14 @@
-# clerico-client-php
-PHP client for the Clerico API
+# PHP client for the Paperjet API #
 
 ## Installation ##
 ```
-php composer.php required fivesqrd/clerico-client-php
+php composer.php required fivesqrd/paperjet-client-php
 ```
 
 ## Setup ##
 Vanilla PHP
 ```
-use Clerico\Document;
+use Paperjet\Document;
 
 $pdf = Document::instance('my-token-key')->generic($params);
 
@@ -19,18 +18,18 @@ echo $pdf;
 
 In Laravel
 ```
-use Clerico;
+use Paperjet;
 
 $params = [
     //...document params
 ]
 
-$pdf = Clerico::document($params)->render();
+$pdf = Paperjet::document($params)->render();
 ```
 
 ## Defining default values ##
 ```
-use Clerico\Document;
+use Paperjet\Document;
 
 $defaults = [
     'template' => '9840mjlep0ou34ko4d',
@@ -58,7 +57,7 @@ In Laravel
 
 ## Document from array input ##
 ```
-use Clerico\Document;
+use Paperjet\Document;
 
 $params = [
     'title'     => 'Tax Invoice',
@@ -87,7 +86,7 @@ $pdf = Document::instance('my-token-key', $defaults)
 
 ## Document from fluent document builder interface ##
 ```
-use Clerico\Document;
+use Paperjet\Document;
 
 $invoice = Document::builder()
     ->template('9840mjlep0ou34ko4d')
@@ -111,9 +110,9 @@ $pdf = Document::instance('my-token-key', $defaults)
 
 In Laravel using callable interface
 ```
-use Clerico;
+use Paperjet;
 
-$document = Clerico::document(function ($builder) {
+$document = Paperjet::document(function ($builder) {
     $builder->title('Tax Invoice')
         ->date(date('Y-m-d'))
         ->due(date('Y-m-d', time() + 86400 * 30))

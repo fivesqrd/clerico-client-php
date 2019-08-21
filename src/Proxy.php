@@ -1,34 +1,34 @@
 <?php
-namespace Clerico;
+namespace Paperjet;
 
 class Proxy
 {
 
     protected $_client;
 
-    protected $_variant;
+    protected $_layout;
 
     protected $_attributes = [];
 
 
-    public  function __construct($client, $variant, $attributes = [])
+    public  function __construct($client, $layout = 'generic', $attributes = [])
     {
-        $this->_client = $client;
-        $this->_variant = $variant;
+        $this->_client     = $client;
+        $this->_layout     = $layout;
         $this->_attributes = $attributes;
     }
 
     public function send()
     {
         return $this->_client->post(
-            "delivery/{$this->_variant}", $this->_attributes
+            "notification/{$this->_layout}", $this->_attributes
         );
     }
 
     public function render()
     {
         return $this->_client->post(
-            "document/{$this->_variant}", $this->_attributes
+            "document/{$this->_layout}", $this->_attributes
         );
     }
 }

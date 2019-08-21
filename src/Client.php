@@ -1,5 +1,5 @@
 <?php
-namespace Clerico;
+namespace Paperjet;
 
 class Client
 {
@@ -12,7 +12,7 @@ class Client
         'Accept'       => 'application/json'
     ];
 
-    const DEFAULT_URI = 'https://clerico.5sq.io/api/';
+    const DEFAULT_URI = 'https://paperjet.5sq.io/api/v1/';
 
     public static function instance($config = [])
     {
@@ -31,7 +31,7 @@ class Client
     public function __construct($client, $token)
     {
         $this->_client = $client;
-        $this->_headers['X-Clerico-Token'] = $token;
+        $this->_headers['X-Paperjet-Token'] = $token;
     }
 
     /**
@@ -48,17 +48,11 @@ class Client
 
         if ($response->getStatusCode() != 200) {
             throw new Exception(
-                $response->getReasonPhrase() . ' response received while trying to connect to Clerico'
+                $response->getReasonPhrase() . ' response received while trying to connect to Paperjet API'
             );
         }
 
-        if ($response->getHeader('Content-Type')[0] == 'application/json') {
-            return json_decode(
-                (string) $response->getBody()
-            );
-        }
-
-        return (string) $response->getBody();
+        return $response->getBody()->getContents();
     }
 
     public function post($path, $data, $query = array())
@@ -69,17 +63,11 @@ class Client
 
         if ($response->getStatusCode() != 200) {
             throw new Exception(
-                $response->getReasonPhrase() . ' response received while trying to connect to Clerico'
+                $response->getReasonPhrase() . ' response received while trying to connect to Paperjet API'
             );
         }
 
-        if ($response->getHeader('Content-Type') == 'application/pdf') {
-            return (string) $response->getBody();
-        }
-
-        return json_decode(
-            (string) $response->getBody()
-        );
+        return $response->getBody()->getContents();
     }
 
     public function put($path, $data, $query = array())
@@ -90,13 +78,11 @@ class Client
 
         if ($response->getStatusCode() != 200) {
             throw new Exception(
-                $response->getReasonPhrase() . ' response received while trying to connect to Clerico'
+                $response->getReasonPhrase() . ' response received while trying to connect to Paperjet API'
             );
         }
 
-        return json_decode(
-            (string) $response->getBody()
-        );
+        return $response->getBody()->getContents();
     }
 
     public function delete($path, $query = array())
@@ -107,12 +93,10 @@ class Client
 
         if ($response->getStatusCode() != 200) {
             throw new Exception(
-                $response->getReasonPhrase() . ' response received while trying to connect to Clerico'
+                $response->getReasonPhrase() . ' response received while trying to connect to Paperjet API'
             );
         }
 
-        return json_decode(
-            (string) $response->getBody()
-        );
+        return $response->getBody()->getContents();
     }
 }
