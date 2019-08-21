@@ -2,7 +2,7 @@
 
 ## Installation ##
 ```
-php composer.php required fivesqrd/paperjet-client-php
+php composer.php required fivesqrd/paperjet-sdk-php
 ```
 
 ## Setup ##
@@ -10,10 +10,16 @@ Vanilla PHP
 ```
 use Paperjet\Document;
 
-$pdf = Document::instance('my-token-key')->generic($params);
+$params = [
+    //...document params
+]
 
 header('Content-Type: application/pdf');
-echo $pdf;
+
+echo Document::instance('my-token-key')
+    ->create($params)
+    ->render();
+
 ```
 
 In Laravel
