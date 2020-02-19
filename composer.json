@@ -1,5 +1,5 @@
 {
-    "name": "fivesqrd/paperjet-sdk-php",
+    "name": "paperjet/sdk",
     "description": "The Paperjet document client",
     "require": {
         "guzzlehttp/guzzle": "~6.0"
