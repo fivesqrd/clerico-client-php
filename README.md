@@ -2,7 +2,7 @@
 
 ## Installation ##
 ```
-php composer.php required fivesqrd/paperjet-sdk-php
+composer require paperjet/sdk
 ```
 
 ## Setup ##
