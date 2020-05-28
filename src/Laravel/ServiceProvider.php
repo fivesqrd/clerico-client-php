@@ -45,9 +45,9 @@ class ServiceProvider extends Support\ServiceProvider
             dirname(__DIR__) . '/Laravel/_config.php', 'paperjet'
         );
 
-        $this->app->singleton('paperjet', function ($app) {
+        $this->app->singleton('Paperjet', function ($app) {
             $config = $app->make('config')->get('paperjet');
-            return new Document($config);
+            return new Factory($config);
         });
 
         $this->app->alias('paperjet', 'Paperjet');
