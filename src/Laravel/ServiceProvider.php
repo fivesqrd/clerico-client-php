@@ -29,7 +29,7 @@ class ServiceProvider extends Support\ServiceProvider
     {
         /* Path to default config file */
         $this->publishes([
-            dirname(__DIR__) . '/src/Laravel/_config.php' => config_path('paperjet.php')
+            dirname(__DIR__) . '/Laravel/_config.php' => config_path('paperjet.php')
         ]);
 
     }
@@ -42,12 +42,12 @@ class ServiceProvider extends Support\ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            dirname(__DIR__) . '/src/Laravel/_config.php', 'paperjet'
+            dirname(__DIR__) . '/Laravel/_config.php', 'paperjet'
         );
 
         $this->app->singleton('paperjet', function ($app) {
             $config = $app->make('config')->get('paperjet');
-            return new Factory($config);
+            return new Document($config);
         });
 
         $this->app->alias('paperjet', 'Paperjet');
